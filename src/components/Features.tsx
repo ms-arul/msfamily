@@ -1,75 +1,103 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Wallet, Users, ScanLine, Bot, Coins, Bell } from 'lucide-react';
+import {
+  Smartphone,
+  Users,
+  FileCheck,
+  Target,
+  Bot,
+  ShieldCheck,
+  Zap
+} from 'lucide-react';
 
 const Features = () => {
   const features = [
     {
-      icon: <Wallet className="text-blue-500" size={32} />,
-      title: 'Personal Finance',
-      description: 'Track income, expenses, savings, budgets, categories, and recurring payments effortlessly.',
-      color: 'bg-blue-50 border-blue-100'
+      icon: <Smartphone className="text-indigo-400" size={28} />,
+      title: 'Smart On-Device SMS Reader',
+      description: 'Automatically detects bank and UPI transaction alerts locally on your device. Zero raw SMS text is ever uploaded to any cloud server.',
+      badge: 'Local & Offline',
+      color: 'from-indigo-500/20 to-indigo-500/5'
     },
     {
-      icon: <Users className="text-pink-500" size={32} />,
-      title: 'Family Finance',
-      description: 'Create family groups, track individual and shared expenses, and set family budgets.',
-      color: 'bg-pink-50 border-pink-100'
+      icon: <Users className="text-pink-400" size={28} />,
+      title: 'Collaborative Family Groups',
+      description: 'Manage household expenses together. Track shared balances, settle up loans, control member visibility, and log family budgets in real-time.',
+      badge: 'Joint Bookkeeping',
+      color: 'from-pink-500/20 to-pink-500/5'
     },
     {
-      icon: <ScanLine className="text-purple-500" size={32} />,
-      title: 'OCR Expense Scanner',
-      description: 'Scan bills to automatically extract merchant, amount, date, taxes, and categories.',
-      color: 'bg-purple-50 border-purple-100'
+      icon: <FileCheck className="text-emerald-400" size={28} />,
+      title: 'Encrypted Proofs Vault (My Proofs)',
+      description: 'Store invoices, receipts, warranty cards, and family identity documents securely with granular authorization gates.',
+      badge: 'Secure Storage',
+      color: 'from-emerald-500/20 to-emerald-500/5'
     },
     {
-      icon: <Bot className="text-indigo-500" size={32} />,
-      title: 'AI Financial Assistant',
-      description: 'Get smart spending analysis, budget suggestions, and warnings for overspending.',
-      color: 'bg-indigo-50 border-indigo-100'
+      icon: <Target className="text-amber-400" size={28} />,
+      title: 'Smart Budgets & Goal Tracking',
+      description: 'Set custom category limits, build emergency savings funds, and monitor visual progress bars towards long-term family milestones.',
+      badge: 'Goal Planning',
+      color: 'from-amber-500/20 to-amber-500/5'
     },
     {
-      icon: <Coins className="text-yellow-500" size={32} />,
-      title: 'Gold & Silver',
-      description: 'Monitor daily gold & silver rates, historical charts, and estimate your holdings.',
-      color: 'bg-yellow-50 border-yellow-100'
+      icon: <Bot className="text-purple-400" size={28} />,
+      title: 'AI Financial Intelligence',
+      description: 'Receive automated spending category breakdowns, predictive overspending warnings, and monthly budget progress reports.',
+      badge: 'Analytics & Insights',
+      color: 'from-purple-500/20 to-purple-500/5'
     },
     {
-      icon: <Bell className="text-orange-500" size={32} />,
-      title: 'Smart Notifications',
-      description: 'Receive bill reminders, budget alerts, and your daily financial summaries.',
-      color: 'bg-orange-50 border-orange-100'
+      icon: <ShieldCheck className="text-cyan-400" size={28} />,
+      title: 'Biometric Lock & Privacy Gates',
+      description: 'Protect your financial records with on-device biometric authentication (Fingerprint / Face ID), system PIN, and 24-hr location purge.',
+      badge: 'Strict Privacy',
+      color: 'from-cyan-500/20 to-cyan-500/5'
     }
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Everything You Need to <span className="text-gradient">Manage Your Money</span>
+    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <Zap size={14} />
+          <span>Complete Household Suite</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Everything You Need to <span className="text-gradient">Manage Your Household</span>
         </h2>
-        <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          Powerful features designed for both personal and family financial success.
+        <p className="text-slate-300 text-base sm:text-lg">
+          Designed from the ground up for individual financial clarity and collaborative family budgeting.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`p-8 rounded-3xl border ${feature.color} hover:shadow-xl hover:-translate-y-1 transition-all glass`}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
+            className="glass-card rounded-3xl p-7 flex flex-col justify-between border border-white/[0.08] relative group"
           >
-            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${feature.color.split(' ')[0]}`}>
-              {feature.icon}
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} border border-white/10 flex items-center justify-center shadow-md`}>
+                  {feature.icon}
+                </div>
+                <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-slate-300">
+                  {feature.badge}
+                </span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-2.5 group-hover:text-indigo-300 transition-colors">
+                {feature.title}
+              </h3>
+
+              <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                {feature.description}
+              </p>
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-3">{feature.title}</h3>
-            <p className="text-slate-600 leading-relaxed">
-              {feature.description}
-            </p>
           </motion.div>
         ))}
       </div>

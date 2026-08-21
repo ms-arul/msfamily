@@ -1,104 +1,163 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  AreaChart,
+  Area
+} from 'recharts';
+import { LayoutDashboard, ArrowUp, TrendingUp, PieChart } from 'lucide-react';
 
-const data = [
-  { name: 'Jan', income: 150000, expense: 50000 },
-  { name: 'Feb', income: 160000, expense: 55000 },
+const MONTHLY_DATA = [
   { name: 'Mar', income: 155000, expense: 60000 },
   { name: 'Apr', income: 170000, expense: 45000 },
   { name: 'May', income: 180000, expense: 52000 },
-  { name: 'Jun', income: 185000, expense: 60420 },
+  { name: 'Jun', income: 185000, expense: 58000 },
+  { name: 'Jul', income: 182000, expense: 54000 },
+  { name: 'Aug', income: 185000, expense: 60420 },
 ];
 
-const categoryData = [
-  { name: 'Food', amount: 15000 },
-  { name: 'Travel', amount: 8000 },
-  { name: 'Shopping', amount: 12000 },
-  { name: 'Bills', amount: 10000 },
-  { name: 'Edu', amount: 5000 },
-  { name: 'Health', amount: 4000 },
+const CATEGORY_DATA = [
+  { name: 'Food & Dining', amount: 18450, color: '#F97316' },
+  { name: 'Groceries', amount: 14200, color: '#10B981' },
+  { name: 'Shopping', amount: 11500, color: '#8B5CF6' },
+  { name: 'Utilities & Bills', amount: 9400, color: '#3B82F6' },
+  { name: 'Vehicle & Fuel', amount: 6870, color: '#EC4899' },
 ];
 
 const DashboardPreview = () => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-50/50 rounded-[3rem] my-10 border border-slate-100">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Your Financial Life. <span className="text-gradient">One Dashboard.</span>
+    <section id="dashboard" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <LayoutDashboard size={14} />
+          <span>Unified Financial Cockpit</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Your Entire Financial Life. <span className="text-gradient">One Clean Dashboard.</span>
         </h2>
-        <p className="text-slate-600 max-w-2xl mx-auto text-lg">
-          Get a complete overview of your finances with beautiful, interactive charts.
+        <p className="text-slate-300 text-base sm:text-lg">
+          Monitor your cash flow, analyze spending trends, track category allocations, and review family contributions with smooth, interactive charts.
         </p>
       </div>
 
-      <div className="glass rounded-[2rem] p-6 md:p-10 shadow-xl border border-white/40">
-        
-        {/* Top Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-          <div className="bg-gradient-primary rounded-2xl p-6 text-white shadow-lg">
-            <p className="text-sm opacity-80 mb-2">Total Balance</p>
-            <h3 className="text-3xl font-bold">₹1,24,580</h3>
+      <div className="glass-card rounded-3xl p-6 sm:p-10 border border-white/10">
+        {/* Metric Cards Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-900/60 to-purple-900/40 border border-indigo-500/30">
+            <span className="text-xs text-indigo-200 uppercase font-semibold tracking-wider block mb-1">Total Household Balance</span>
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-2xl sm:text-3xl font-black text-white">₹1,24,580</h3>
+              <span className="text-xs text-emerald-400 font-bold flex items-center"><ArrowUp size={12} /> +12.5%</span>
+            </div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <p className="text-sm text-slate-500 mb-2">Income</p>
-            <h3 className="text-3xl font-bold text-green-600">₹1,85,000</h3>
+
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+            <span className="text-xs text-slate-400 uppercase font-semibold tracking-wider block mb-1">Monthly Income (Aug)</span>
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-2xl sm:text-3xl font-black text-emerald-400">₹1,85,000</h3>
+              <span className="text-[10px] text-slate-400">Stable</span>
+            </div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <p className="text-sm text-slate-500 mb-2">Expenses</p>
-            <h3 className="text-3xl font-bold text-red-500">₹60,420</h3>
+
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+            <span className="text-xs text-slate-400 uppercase font-semibold tracking-wider block mb-1">Monthly Expenses (Aug)</span>
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-2xl sm:text-3xl font-black text-rose-400">₹60,420</h3>
+              <span className="text-xs text-rose-400 font-bold flex items-center"><ArrowUp size={12} /> 32% spend</span>
+            </div>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <p className="text-sm text-slate-500 mb-2">Savings</p>
-            <h3 className="text-3xl font-bold text-blue-600">₹42,300</h3>
+
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+            <span className="text-xs text-slate-400 uppercase font-semibold tracking-wider block mb-1">Savings Allocated</span>
+            <div className="flex items-baseline justify-between">
+              <h3 className="text-2xl sm:text-3xl font-black text-indigo-400">₹42,300</h3>
+              <span className="text-xs text-emerald-400 font-bold">+14% vs July</span>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Chart */}
-          <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <h4 className="text-lg font-bold mb-6">Income vs Expenses</h4>
-            <div className="h-72">
+        {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Area Cash Flow Chart (8 cols) */}
+          <div className="lg:col-span-8 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+            <div className="flex justify-between items-center mb-6">
+              <h4 className="text-sm font-bold text-white flex items-center gap-2">
+                <TrendingUp size={16} className="text-indigo-400" />
+                <span>Income vs Expenses Trend (6 Months)</span>
+              </h4>
+              <div className="flex items-center gap-4 text-xs">
+                <span className="flex items-center gap-1.5 text-emerald-400">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Income
+                </span>
+                <span className="flex items-center gap-1.5 text-rose-400">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span> Expenses
+                </span>
+              </div>
+            </div>
+
+            <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                <AreaChart data={MONTHLY_DATA} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
                   <defs>
-                    <linearGradient id="colorIncome" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#16a34a" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#16a34a" stopOpacity={0}/>
+                    <linearGradient id="incomeGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10B981" stopOpacity={0.4} />
+                      <stop offset="95%" stopColor="#10B981" stopOpacity={0.0} />
                     </linearGradient>
-                    <linearGradient id="colorExpense" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#ef4444" stopOpacity={0}/>
+                    <linearGradient id="expenseGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#F43F5E" stopOpacity={0.4} />
+                      <stop offset="95%" stopColor="#F43F5E" stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
-                  <YAxis axisLine={false} tickLine={false} tick={{fill: '#64748b', fontSize: 12}} />
-                  <Tooltip contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'}} />
-                  <Area type="monotone" dataKey="income" stroke="#16a34a" strokeWidth={3} fillOpacity={1} fill="url(#colorIncome)" />
-                  <Area type="monotone" dataKey="expense" stroke="#ef4444" strokeWidth={3} fillOpacity={1} fill="url(#colorExpense)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
+                  <XAxis dataKey="name" stroke="#64748B" fontSize={11} tickLine={false} axisLine={false} />
+                  <YAxis stroke="#64748B" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `₹${val/1000}k`} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#1E293B',
+                      borderColor: 'rgba(255,255,255,0.1)',
+                      borderRadius: '12px',
+                      color: '#fff',
+                      fontSize: '12px'
+                    }}
+                    formatter={(value: any) => [`₹${Number(value).toLocaleString('en-IN')}`, '']}
+                  />
+                  <Area type="monotone" dataKey="income" stroke="#10B981" strokeWidth={2.5} fillOpacity={1} fill="url(#incomeGrad)" />
+                  <Area type="monotone" dataKey="expense" stroke="#F43F5E" strokeWidth={2.5} fillOpacity={1} fill="url(#expenseGrad)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
           </div>
 
-          {/* Categories Chart */}
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-            <h4 className="text-lg font-bold mb-6">Top Categories</h4>
-            <div className="h-72">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={categoryData} layout="vertical" margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#f1f5f9" />
-                  <XAxis type="number" hide />
-                  <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{fill: '#475569', fontSize: 12, fontWeight: 500}} width={70} />
-                  <Tooltip cursor={{fill: '#f8fafc'}} contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 2px 4px rgb(0 0 0 / 0.1)'}} />
-                  <Bar dataKey="amount" fill="#6B46C1" radius={[0, 4, 4, 0]} barSize={16} />
-                </BarChart>
-              </ResponsiveContainer>
+          {/* Top Category Spending (4 cols) */}
+          <div className="lg:col-span-4 p-6 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+            <h4 className="text-sm font-bold text-white mb-6 flex items-center gap-2">
+              <PieChart size={16} className="text-purple-400" />
+              <span>Top Expense Categories</span>
+            </h4>
+
+            <div className="space-y-4">
+              {CATEGORY_DATA.map((cat, i) => (
+                <div key={i}>
+                  <div className="flex justify-between items-center text-xs mb-1">
+                    <span className="text-slate-300 font-medium">{cat.name}</span>
+                    <span className="font-bold text-white">₹{cat.amount.toLocaleString('en-IN')}</span>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                    <div
+                      className="h-full rounded-full"
+                      style={{
+                        width: `${(cat.amount / 60420) * 100}%`,
+                        backgroundColor: cat.color
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

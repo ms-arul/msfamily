@@ -1,109 +1,150 @@
-import React from 'react';
-import { ClipboardCheck, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import {
+  ShieldCheck,
+  FileText,
+  Clock,
+  RotateCcw,
+  Trash2,
+  ArrowRight
+} from 'lucide-react';
 
 const Legal = () => {
   return (
-    <section className="max-w-7xl mx-auto w-full">
-      {/* Terms & Conditions Block */}
-      <div className="bg-[#F8F5FF] w-full py-12 px-4 sm:px-6 lg:px-8 border-y border-purple-100">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          <div className="flex items-center gap-4 md:w-1/4">
-            <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 relative">
-              <ClipboardCheck size={32} />
-              <div className="absolute -bottom-2 -right-2 bg-pink-500 rounded-full p-1 text-white">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
+    <section id="legal" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <ShieldCheck size={14} />
+          <span>Governance & Policy Compliance</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Trust, Privacy & <span className="text-gradient">Data Transparency</span>
+        </h2>
+        <p className="text-slate-300 text-base sm:text-lg">
+          We operate with absolute transparency. Review our official legal documents, data retention standards, and account deletion procedures below.
+        </p>
+      </div>
+
+      {/* Legal Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        {/* Privacy Policy Card */}
+        <div className="glass-card rounded-3xl p-6 border border-emerald-500/20 flex flex-col justify-between hover:border-emerald-500/40 transition-colors">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+              <ShieldCheck size={24} />
             </div>
-            <h2 className="text-3xl font-bold text-slate-800 leading-tight">Terms &<br/>Conditions</h2>
+            <h3 className="text-lg font-bold text-white mb-2">Privacy Policy</h3>
+            <p className="text-xs text-slate-300 leading-relaxed mb-4">
+              Details how data is processed, on-device local SMS parsing, zero third-party data selling, and user rights.
+            </p>
+            <span className="text-[10px] font-mono text-emerald-400 block mb-4">
+              Updated: August 14, 2026
+            </span>
           </div>
 
-          <div className="md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm text-slate-600">
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">1</span>
-              <p>By using MSFamily Expense Tracker, you agree to provide accurate information.</p>
+          <Link
+            to="/privacy-policy"
+            className="w-full py-2.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-emerald-500/30"
+          >
+            <span>Read Privacy Policy</span>
+            <ArrowRight size={13} />
+          </Link>
+        </div>
+
+        {/* Terms of Service Card */}
+        <div className="glass-card rounded-3xl p-6 border border-indigo-500/20 flex flex-col justify-between hover:border-indigo-500/40 transition-colors">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mb-4">
+              <FileText size={24} />
             </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">4</span>
-              <p>We are not liable for any financial loss or decisions made based on app insights.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">2</span>
-              <p>You are responsible for maintaining the confidentiality of your account.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">5</span>
-              <p>We may update these terms at any time. Continued use means you accept the changes.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-purple-200 text-purple-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">3</span>
-              <p>All financial data is for personal use only and should not be shared.</p>
-            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Terms of Service</h3>
+            <p className="text-xs text-slate-300 leading-relaxed mb-4">
+              Contractual terms, household account usage guidelines, financial disclaimers, and acceptable use rules.
+            </p>
+            <span className="text-[10px] font-mono text-indigo-400 block mb-4">
+              Updated: August 14, 2026
+            </span>
           </div>
 
-          <div className="md:w-1/4 hidden md:flex justify-end opacity-80">
-            {/* Simple decorative illustration */}
-            <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="40" y="20" width="120" height="160" rx="8" fill="white" stroke="#E9D5FF" strokeWidth="4"/>
-              <line x1="60" y1="60" x2="140" y2="60" stroke="#E9D5FF" strokeWidth="4" strokeLinecap="round"/>
-              <line x1="60" y1="90" x2="140" y2="90" stroke="#E9D5FF" strokeWidth="4" strokeLinecap="round"/>
-              <line x1="60" y1="120" x2="100" y2="120" stroke="#E9D5FF" strokeWidth="4" strokeLinecap="round"/>
-              <path d="M160 120 L130 180" stroke="#8B5CF6" strokeWidth="8" strokeLinecap="round"/>
-            </svg>
+          <Link
+            to="/terms"
+            className="w-full py-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-indigo-500/30"
+          >
+            <span>Read Terms of Service</span>
+            <ArrowRight size={13} />
+          </Link>
+        </div>
+
+        {/* Data Retention Card */}
+        <div className="glass-card rounded-3xl p-6 border border-purple-500/20 flex flex-col justify-between hover:border-purple-500/40 transition-colors">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center mb-4">
+              <Clock size={24} />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Data Retention Policy</h3>
+            <p className="text-xs text-slate-300 leading-relaxed mb-4">
+              24-hour automatic location coordinate purge, 30-day backup erasure, and active account lifecycles.
+            </p>
+            <span className="text-[10px] font-mono text-purple-400 block mb-4">
+              Updated: August 14, 2026
+            </span>
           </div>
+
+          <Link
+            to="/retention"
+            className="w-full py-2.5 rounded-xl bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-purple-500/30"
+          >
+            <span>Read Retention Policy</span>
+            <ArrowRight size={13} />
+          </Link>
+        </div>
+
+        {/* Subscriptions & Refunds Card */}
+        <div className="glass-card rounded-3xl p-6 border border-amber-500/20 flex flex-col justify-between hover:border-amber-500/40 transition-colors">
+          <div>
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mb-4">
+              <RotateCcw size={24} />
+            </div>
+            <h3 className="text-lg font-bold text-white mb-2">Subscription & Refunds</h3>
+            <p className="text-xs text-slate-300 leading-relaxed mb-4">
+              Pricing tiers, Google Play billing terms, 14-day refund window, and cancellation instructions.
+            </p>
+            <span className="text-[10px] font-mono text-amber-400 block mb-4">
+              Updated: August 14, 2026
+            </span>
+          </div>
+
+          <Link
+            to="/refund-policy"
+            className="w-full py-2.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/30 text-amber-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 border border-amber-500/30"
+          >
+            <span>Read Refund Policy</span>
+            <ArrowRight size={13} />
+          </Link>
         </div>
       </div>
 
-      {/* Privacy Policy Block */}
-      <div className="bg-[#F0FDF4] w-full py-12 px-4 sm:px-6 lg:px-8 border-b border-green-100">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          
-          <div className="flex items-center gap-4 md:w-1/4">
-            <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 relative">
-              <ShieldCheck size={32} />
-              <div className="absolute -bottom-2 -right-2 bg-yellow-500 rounded-full p-1.5 text-white">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              </div>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-800 leading-tight">Privacy<br/>Policy</h2>
+      {/* Public Account Deletion Bar */}
+      <div className="p-6 rounded-3xl bg-red-500/10 border border-red-500/20 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-red-500/20 text-red-400 flex items-center justify-center flex-shrink-0">
+            <Trash2 size={24} />
           </div>
-
-          <div className="md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-sm text-slate-600">
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-200 text-green-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">1</span>
-              <p>We collect only necessary information to provide better services.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-200 text-green-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">4</span>
-              <p>You can request data deletion anytime from your account.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-200 text-green-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">2</span>
-              <p>Your data is encrypted and stored securely.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-200 text-green-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">5</span>
-              <p>We use cookies to improve user experience and app performance.</p>
-            </div>
-            <div className="flex gap-3">
-              <span className="w-6 h-6 rounded-full bg-green-200 text-green-700 flex items-center justify-center flex-shrink-0 font-semibold text-xs">3</span>
-              <p>We do not sell or share your personal data with third parties.</p>
-            </div>
-          </div>
-
-          <div className="md:w-1/4 hidden md:flex justify-end opacity-80">
-             {/* Simple decorative illustration */}
-             <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="40" y="80" width="120" height="90" rx="16" fill="#10B981" />
-              <path d="M60 80 V50 C60 25 140 25 140 50 V80" stroke="#10B981" strokeWidth="16" strokeLinecap="round" />
-              <circle cx="100" cy="125" r="10" fill="white" />
-              <path d="M100 125 L100 145" stroke="white" strokeWidth="4" strokeLinecap="round" />
-              <path d="M140 100 L180 100 M160 80 L160 120" stroke="#6EE7B7" strokeWidth="8" strokeLinecap="round" />
-            </svg>
+          <div>
+            <h3 className="text-base font-bold text-white mb-1">Looking for the Account Deletion Portal?</h3>
+            <p className="text-xs text-slate-300">
+              Permanently delete your account, authentication profile, and wipe all financial/family logs from our servers.
+            </p>
           </div>
         </div>
-      </div>
 
+        <Link
+          to="/delete-account"
+          className="px-6 py-3 rounded-2xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2 flex-shrink-0 shadow-lg"
+        >
+          <span>Open Deletion Portal</span>
+          <ArrowRight size={14} />
+        </Link>
+      </div>
     </section>
   );
 };

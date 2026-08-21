@@ -1,42 +1,51 @@
-import React, { useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import DashboardPreview from './components/DashboardPreview';
-import OCRScanner from './components/OCRScanner';
-import FamilyFinance from './components/FamilyFinance';
-import GoldSilver from './components/GoldSilver';
-import AIInsights from './components/AIInsights';
-import Subscription from './components/Subscription';
-import FAQ from './components/FAQ';
-import Legal from './components/Legal';
-import Support from './components/Support';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
+import DataRetentionPage from './pages/DataRetentionPage';
+import SubscriptionRefundPolicyPage from './pages/SubscriptionRefundPolicyPage';
+import SecurityInfoPage from './pages/SecurityInfoPage';
+import ChangelogPage from './pages/ChangelogPage';
+import AboutPage from './pages/AboutPage';
+import LegalHubPage from './pages/LegalHubPage';
+import PublicDeleteAccountPage from './pages/PublicDeleteAccountPage';
+import SupportPage from './pages/SupportPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground overflow-x-hidden selection:bg-primary selection:text-white relative z-0">
-      {/* Background Glowing Orbs for Glassmorphism */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-blue-400/10 blur-[100px]"></div>
-        <div className="absolute top-[20%] right-[-10%] w-[40vw] h-[60vw] rounded-full bg-purple-400/10 blur-[120px]"></div>
-        <div className="absolute bottom-[-10%] left-[10%] w-[50vw] h-[50vw] rounded-full bg-pink-400/10 blur-[100px]"></div>
-      </div>
-      <Navbar />
-      <main>
-        <div id="home"><Hero /></div>
-        <div id="features"><Features /></div>
-        <div id="dashboard"><DashboardPreview /></div>
-        <div id="ocr"><OCRScanner /></div>
-        <div id="family"><FamilyFinance /></div>
-        <div id="gold-silver"><GoldSilver /></div>
-        <div id="insights"><AIInsights /></div>
-        <div id="subscription"><Subscription /></div>
-        <div id="faq"><FAQ /></div>
-        <div id="legal"><Legal /></div>
-        <div id="support"><Support /></div>
-      </main>
-      <Footer />
+    <div className="min-h-screen bg-[#0B0F19] font-sans text-slate-100 selection:bg-indigo-500 selection:text-white relative">
+      <BrowserRouter>
+        <Routes>
+          {/* Main Homepage */}
+          <Route path="/" element={<Home />} />
+
+          {/* Authentication Entry */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Canonical Google Play Privacy Policy Route */}
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
+
+          {/* Direct Legal & Compliance Routes */}
+          <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/retention" element={<DataRetentionPage />} />
+          <Route path="/refund-policy" element={<SubscriptionRefundPolicyPage />} />
+          <Route path="/security" element={<SecurityInfoPage />} />
+          <Route path="/legal" element={<LegalHubPage />} />
+
+          {/* Public Account Deletion Portal (Google Play Requirement) */}
+          <Route path="/delete-account" element={<PublicDeleteAccountPage />} />
+
+          {/* Information & Support Routes */}
+          <Route path="/changelog" element={<ChangelogPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/support" element={<SupportPage />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

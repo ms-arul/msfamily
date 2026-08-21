@@ -1,110 +1,83 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Lightbulb, TrendingDown, AlertTriangle, Clock, CreditCard } from 'lucide-react';
+import {
+  Bot,
+  TrendingUp,
+  AlertTriangle,
+  Lightbulb
+} from 'lucide-react';
+
+const INSIGHTS = [
+  {
+    icon: <AlertTriangle className="text-amber-400" size={20} />,
+    title: 'Dining & Food Overspend Alert',
+    badge: 'Category Warning',
+    badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+    description: 'You have utilized 85% of your food budget with 12 days left in the month. Consider pacing takeout orders.',
+    impact: 'Estimated savings: ₹2,400'
+  },
+  {
+    icon: <Lightbulb className="text-indigo-400" size={20} />,
+    title: 'Recurring Subscription Detected',
+    badge: 'Smart Identification',
+    badgeColor: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20',
+    description: 'Detected a recurring ₹499 payment for Streaming Services due on 24th August. Automatically queued in reminders.',
+    impact: 'Auto-categorized'
+  },
+  {
+    icon: <TrendingUp className="text-emerald-400" size={20} />,
+    title: 'Emergency Fund Goal Milestone',
+    badge: 'Savings Milestone',
+    badgeColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
+    description: 'Your household savings rate is up 14% compared to July 2026. You are on track to achieve your House Down Payment goal.',
+    impact: 'Target on schedule'
+  }
+];
 
 const AIInsights = () => {
-  const insights = [
-    {
-      type: 'insight',
-      icon: <Bot size={24} className="text-purple-500" />,
-      color: 'bg-purple-50 border-purple-100',
-      message: 'You spent ₹4,500 on food this month, which is 18% higher than last month.',
-      suggestion: 'Reduce food delivery by 2 orders/week.',
-      saving: '₹1,200',
-      actionText: 'Review Food Expenses'
-    },
-    {
-      type: 'opportunity',
-      icon: <Lightbulb size={24} className="text-yellow-500" />,
-      color: 'bg-yellow-50 border-yellow-100',
-      message: 'You have ₹15,000 sitting idle in your checking account.',
-      suggestion: 'Move ₹10,000 to a high-yield savings account or invest in Silver.',
-      saving: '₹600/year',
-      actionText: 'Explore Investments'
-    },
-    {
-      type: 'warning',
-      icon: <AlertTriangle size={24} className="text-red-500" />,
-      color: 'bg-red-50 border-red-100',
-      message: 'You are currently 82% through your monthly Shopping budget.',
-      suggestion: 'Hold off on non-essential purchases for the next 12 days.',
-      actionText: 'View Budget'
-    },
-    {
-      type: 'reminder',
-      icon: <Clock size={24} className="text-blue-500" />,
-      color: 'bg-blue-50 border-blue-100',
-      message: 'Upcoming Bill: Electricity (approx ₹1,800) is due in 3 days.',
-      actionText: 'Pay Now'
-    },
-    {
-      type: 'subscription',
-      icon: <CreditCard size={24} className="text-orange-500" />,
-      color: 'bg-orange-50 border-orange-100',
-      message: 'You haven\'t used your "FitnessApp" subscription in 2 months.',
-      suggestion: 'Cancel this subscription to save money.',
-      saving: '₹499/month',
-      actionText: 'Manage Subscriptions'
-    }
-  ];
-
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-between mb-12">
-        <div className="mb-6 md:mb-0">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Your Personal <span className="text-gradient">Financial Intelligence</span>
-          </h2>
-          <p className="text-slate-600 max-w-xl text-lg">
-            Our AI analyzes your spending patterns to find savings, warn you about budgets, and keep you on track.
-          </p>
+    <section id="insights" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-4">
+          <Bot size={14} />
+          <span>Automated Financial Intelligence</span>
         </div>
-        <div className="hidden md:flex w-24 h-24 bg-gradient-primary rounded-full items-center justify-center text-white shadow-xl animate-pulse shadow-primary/30">
-          <Bot size={48} />
-        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">
+          Intelligent Insights for <span className="text-gradient">Smarter Decisions</span>
+        </h2>
+        <p className="text-slate-300 text-base sm:text-lg">
+          MS Family automatically analyzes your transaction patterns locally to generate predictive overspending alerts, budget adjustments, and proactive savings milestones.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {insights.map((insight, index) => (
-          <motion.div 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {INSIGHTS.map((insight, index) => (
+          <motion.div
             key={index}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            className={`p-6 rounded-[2rem] border shadow-sm hover:shadow-md transition-shadow flex flex-col h-full bg-white`}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="glass-card rounded-3xl p-6 sm:p-7 border border-white/[0.08] flex flex-col justify-between"
           >
-            <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${insight.color}`}>
-                {insight.icon}
-              </div>
-              <div className="flex-1">
-                <h4 className="font-semibold text-slate-800 text-sm tracking-wide uppercase mb-1">
-                  {insight.type === 'insight' ? 'Spending Insight' : 
-                   insight.type === 'opportunity' ? 'Saving Opportunity' : 
-                   insight.type === 'warning' ? 'Budget Warning' : 
-                   insight.type === 'reminder' ? 'Upcoming Bill' : 'Subscription Alert'}
-                </h4>
-                <p className="text-foreground font-medium leading-snug">{insight.message}</p>
-              </div>
-            </div>
-            
-            {insight.suggestion && (
-              <div className="bg-slate-50 rounded-xl p-3 mb-4 text-sm text-slate-600 flex gap-2 items-start border border-slate-100 mt-auto">
-                <Lightbulb size={16} className="text-yellow-600 mt-0.5 flex-shrink-0" />
-                <span>{insight.suggestion}</span>
-              </div>
-            )}
-            
-            <div className="mt-auto pt-4 flex items-center justify-between border-t border-slate-100">
-              {insight.saving ? (
-                <div className="text-green-600 font-semibold text-sm flex items-center gap-1">
-                  <TrendingDown size={14} /> Save {insight.saving}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center">
+                  {insight.icon}
                 </div>
-              ) : <div></div>}
-              <button className="text-primary font-medium text-sm hover:underline">
-                {insight.actionText} &rarr;
-              </button>
+                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${insight.badgeColor}`}>
+                  {insight.badge}
+                </span>
+              </div>
+
+              <h3 className="text-base font-bold text-white mb-2">{insight.title}</h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                {insight.description}
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs">
+              <span className="text-slate-400">Insight Benefit:</span>
+              <span className="font-semibold text-white">{insight.impact}</span>
             </div>
           </motion.div>
         ))}

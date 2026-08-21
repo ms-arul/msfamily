@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, LogIn } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Menu, X, Shield, ArrowRight } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,73 +17,131 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Features', href: '#features' },
-    { name: 'Gold & Silver', href: '#gold-silver' },
-    { name: 'Subscription', href: '#subscription' },
-    { name: 'About Us', href: '#support' },
+    { name: 'Features', href: isHomePage ? '#features' : '/#features' },
+    { name: 'Smart SMS', href: isHomePage ? '#sms' : '/#sms' },
+    { name: 'Family', href: isHomePage ? '#family' : '/#family' },
+    { name: 'Pricing', href: isHomePage ? '#subscription' : '/#subscription' },
+    { name: 'FAQ', href: isHomePage ? '#faq' : '/#faq' },
+    { name: 'Legal & Privacy', href: '/legal' },
+    { name: 'Support', href: '/support' }
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-gradient-to-r from-blue-900/10 via-purple-900/10 to-pink-900/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(107,70,193,0.15)] border-b border-white/20 py-3' : 'bg-transparent py-5'}`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'glass-nav py-3'
+          : 'bg-transparent py-5'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => window.scrollTo(0,0)}>
-            <img src="/mslogo.png" alt="MSFamily Logo" className="h-10 w-auto" />
-            <span className="ml-2 text-2xl font-black bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">MSFamily</span>
-          </div>
+          {/* Brand Logo */}
+          <Link to="/" className="flex-shrink-0 flex items-center gap-2.5 group">
+            <img
+              src="/msfamily.webp"
+              onError={(e) => {
+                // Fallback to mslogo.png if webp is not found
+                (e.currentTarget as HTMLImageElement).src = '/mslogo.png';
+              }}
+              alt="MS Family Logo"
+              className="h-9 w-9 rounded-xl object-contain shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform"
+            />
+            <div className="flex flex-col">
+              <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
+                MS Family
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
+                  v2.1.8
+                </span>
+              </span>
+            </div>
+          </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-8 items-center">
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center space-x-6 text-sm font-medium">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-foreground/80 hover:text-primary font-medium transition-colors"
+                className="text-slate-300 hover:text-white transition-colors"
               >
                 {link.name}
               </a>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex">
-            <button className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white px-6 py-2 rounded-full font-medium transition-all hover:shadow-[0_0_20px_rgba(107,70,193,0.6)] hover:scale-105">
-              <span>Login / Sign Up</span>
-            </button>
+          {/* Action CTAs */}
+          <div className="hidden sm:flex items-center gap-3">
+            <Link
+              to="/privacy-policy"
+              className="px-3.5 py-2 text-xs font-semibold rounded-xl text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 transition-colors flex items-center gap-1.5"
+            >
+              <Shield size={13} className="text-emerald-400" />
+              <span>Privacy Policy</span>
+            </Link>
+
+            <Link
+              to="/login"
+              className="px-5 py-2 text-xs font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-500/25 transition-all hover:scale-105 flex items-center gap-1.5"
+            >
+              <span>Launch Web App</span>
+              <ArrowRight size={13} />
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile Menu Button */}
+          <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-foreground hover:text-primary focus:outline-none"
+              className="text-slate-300 hover:text-white p-2 rounded-xl bg-white/[0.04] border border-white/10"
+              aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass absolute top-full left-0 w-full border-t border-border shadow-lg">
-          <div className="px-4 pt-2 pb-6 space-y-2">
+        <div className="lg:hidden glass-nav border-t border-white/10 mt-3 px-4 pt-3 pb-6 space-y-3">
+          <div className="grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-primary/5"
+                className="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-300 hover:text-white hover:bg-white/[0.06] transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <button className="w-full mt-4 flex justify-center items-center space-x-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white px-6 py-3 rounded-xl font-medium transition-all hover:shadow-[0_0_20px_rgba(107,70,193,0.6)] hover:scale-105">
-              <LogIn size={18} />
-              <span>Login / Sign Up</span>
-            </button>
+          </div>
+
+          <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+            <Link
+              to="/privacy-policy"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-white/[0.04] border border-white/10"
+            >
+              <Shield size={14} className="text-emerald-400" />
+              <span>Official Privacy Policy</span>
+            </Link>
+            <Link
+              to="/delete-account"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-red-400 bg-red-500/10 border border-red-500/20"
+            >
+              <span>Account Deletion Portal</span>
+            </Link>
+            <Link
+              to="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-indigo-600"
+            >
+              <span>Sign In / Launch App</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       )}
