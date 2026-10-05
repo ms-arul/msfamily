@@ -52,7 +52,7 @@ export default function LegalHubPage() {
             Legal, Privacy & Governance
           </h1>
           <p className="text-slate-400 text-sm sm:text-base">
-            Transparent documentation regarding user privacy, on-device data processing, terms of service, and regulatory disclosures for MS Family v2.1.8.
+            Transparent documentation regarding user privacy, on-device data processing, terms of service, and regulatory disclosures for MS Family v2.1.9.
           </p>
         </div>
 

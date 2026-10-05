@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 
 export default function ChangelogPage() {
   useEffect(() => {
-    document.title = 'MS Family Release History & Changelog — v2.1.8';
+    document.title = 'MS Family Release History & Changelog — v2.1.9';
   }, []);
 
   return (

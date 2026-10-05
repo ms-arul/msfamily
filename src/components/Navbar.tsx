@@ -51,7 +51,7 @@ const Navbar = () => {
               <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
                 MS Family
                 <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
-                  v2.1.8
+                  v2.1.9
                 </span>
               </span>
             </div>

@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.msfamily.app",
+      "sha256_cert_fingerprints": [
+        "84:21:16:A2:58:FB:D1:22:BA:0B:19:42:C9:C2:17:10:4A:57:D7:19:52:4D:7D:0F:C5:68:59:EC:82:92:3C:B5",
+        "27:50:76:9E:EA:11:D5:CC:15:BD:57:7E:27:45:7F:23:6F:E2:85:A7:E5:12:EE:DA:DF:D1:36:92:97:02:2F:6A",
+        "A2:A9:9C:D9:33:46:FC:7E:26:37:07:87:0E:70:A0:E4:27:95:85:41:A2:5C:49:BC:96:19:FD:80:C4:FA:5B:24"
+      ]
+    }
+  }
+]

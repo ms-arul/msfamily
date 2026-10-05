@@ -72,8 +72,8 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
       developer: 'XPOOL Technology Pvt Ltd',
       website: 'https://xpool.info',
       supportEmail: 'velgo7686@gmail.com',
-      version: '2.1.8',
-      buildNumber: '218',
+      version: '2.1.9',
+      buildNumber: '219',
       copyright: '© 2026 XPOOL Technology Pvt Ltd. All rights reserved.',
       socialLinks: [
         { name: 'GitHub', url: 'https://github.com/xpool-tech' },
@@ -482,14 +482,14 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
     id: 'version',
     title: 'App Version & Build Metrics',
     subtitle: 'Software Build & Deployment Metrics',
-    lastUpdated: 'August 20, 2026',
+    lastUpdated: 'August 21, 2026',
     sections: [
       {
         title: '1. App Build Parameters',
         content: [
-          '• Version: 2.1.8 (Production Release)',
-          '• Build Number: 218',
-          '• Release Date: August 20, 2026',
+          '• Version: 2.1.9 (Production Release)',
+          '• Build Number: 219',
+          '• Release Date: August 21, 2026',
           '• Channel: Stable - Main'
         ]
       },
@@ -519,8 +519,17 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
     id: 'changelog',
     title: 'Changelog',
     subtitle: 'History of Releases and Feature Additions',
-    lastUpdated: 'August 20, 2026',
+    lastUpdated: 'August 21, 2026',
     sections: [
+      {
+        title: 'v2.1.9 (August 21, 2026) - AI Provider & Mobile UI Enhancement Release',
+        content: [
+          '• [Release] Production build v2.1.9 (build 219).',
+          '• [AI Engine] Migrated all AI vision and text services exclusively to OpenRouter high-performance models.',
+          '• [AI Vision] Removed premature race timeouts and enhanced document extraction parsing.',
+          '• [Mobile UI] Enhanced mobile document cards with responsive Details, Edit, and Copy action controls.'
+        ]
+      },
       {
         title: 'v2.1.8 (August 20, 2026) - Compliance & Corporate Identity Migration',
         content: [
