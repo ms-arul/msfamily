@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   Check,
   Star,
@@ -11,6 +10,7 @@ import {
   Zap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { GooglePlayIcon, PLAY_STORE_URL } from './PlayStoreButton';
 
 const Subscription = () => {
   const [isYearly, setIsYearly] = useState(true);
@@ -192,17 +192,29 @@ const Subscription = () => {
             </div>
 
             {/* CTA Button */}
-            <Link
-              to={plan.ctaLink}
-              className={`w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 ${
-                plan.popular
-                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-600/30 hover:scale-[1.02]'
-                  : 'bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10'
-              }`}
-            >
-              <span>{plan.ctaText}</span>
-              <ArrowRight size={14} />
-            </Link>
+            {plan.id === 'free' ? (
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 bg-white/[0.08] hover:bg-white/[0.15] text-white border border-white/15 hover:border-emerald-400/50 shadow-md hover:scale-[1.02] group"
+              >
+                <GooglePlayIcon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                <span>Get Free on Google Play</span>
+              </a>
+            ) : (
+              <Link
+                to={plan.ctaLink}
+                className={`w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-center transition-all flex items-center justify-center gap-2 ${
+                  plan.popular
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-lg shadow-indigo-600/30 hover:scale-[1.02]'
+                    : 'bg-white/[0.06] hover:bg-white/[0.12] text-white border border-white/10'
+                }`}
+              >
+                <span>{plan.ctaText}</span>
+                <ArrowRight size={14} />
+              </Link>
+            )}
           </div>
         ))}
       </div>

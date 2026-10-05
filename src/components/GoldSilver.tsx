@@ -1,14 +1,10 @@
-import React, { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useMemo } from 'react';
 import {
   Coins,
-  TrendingUp,
   ArrowUp,
   ArrowDown,
   Calculator,
-  Info,
-  Calendar,
-  Sparkles
+  Info
 } from 'lucide-react';
 import {
   ResponsiveContainer,

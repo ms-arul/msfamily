@@ -51,7 +51,7 @@ function renderDocHtml(doc: AppInfoDoc): string {
               <span class="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
                 MS Family
                 <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
-                  v2.1.9
+                  v2.3.0
                 </span>
               </span>
             </div>
@@ -107,7 +107,7 @@ function renderDocHtml(doc: AppInfoDoc): string {
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="text-slate-400">App Version:</span>
-                  <span class="font-semibold text-indigo-300 font-mono">v2.1.9 (build 219)</span>
+                  <span class="font-semibold text-indigo-300 font-mono">v2.3.0 (build 230)</span>
                 </div>
               </div>
             </div>

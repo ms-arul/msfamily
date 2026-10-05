@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Shield, ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { PlayStoreButton, GooglePlayIcon, PLAY_STORE_URL } from './PlayStoreButton';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,7 +52,7 @@ const Navbar = () => {
               <span className="text-xl font-black tracking-tight text-white flex items-center gap-1.5">
                 MS Family
                 <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-indigo-500/20 border border-indigo-500/30 text-indigo-300">
-                  v2.1.9
+                  v2.3.0
                 </span>
               </span>
             </div>
@@ -71,18 +72,12 @@ const Navbar = () => {
           </div>
 
           {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
-            <Link
-              to="/privacy-policy"
-              className="px-3.5 py-2 text-xs font-semibold rounded-xl text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 transition-colors flex items-center gap-1.5"
-            >
-              <Shield size={13} className="text-emerald-400" />
-              <span>Privacy Policy</span>
-            </Link>
+          <div className="hidden sm:flex items-center gap-2.5">
+            <PlayStoreButton variant="navbar" />
 
             <Link
               to="/login"
-              className="px-5 py-2 text-xs font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-500/25 transition-all hover:scale-105 flex items-center gap-1.5"
+              className="px-4 py-2 text-xs font-bold rounded-xl text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-500/25 transition-all hover:scale-105 flex items-center gap-1.5"
             >
               <span>Launch Web App</span>
               <ArrowRight size={13} />
@@ -118,11 +113,22 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+          <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2.5 py-3 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 via-indigo-600 to-purple-600 shadow-lg shadow-indigo-600/30 active:scale-95 transition-transform"
+            >
+              <GooglePlayIcon className="w-4 h-4" />
+              <span>Install from Google Play</span>
+            </a>
+
             <Link
               to="/privacy-policy"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-slate-300 bg-white/[0.04] border border-white/10"
+              className="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-white/[0.04] border border-white/10"
             >
               <Shield size={14} className="text-emerald-400" />
               <span>Official Privacy Policy</span>
@@ -130,17 +136,17 @@ const Navbar = () => {
             <Link
               to="/delete-account"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold text-red-400 bg-red-500/10 border border-red-500/20"
+              className="w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-semibold text-red-400 bg-red-500/10 border border-red-500/20"
             >
               <span>Account Deletion Portal</span>
             </Link>
             <Link
               to="/login"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-bold text-white bg-indigo-600"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-bold text-white bg-white/[0.08] hover:bg-white/[0.12] border border-white/10"
             >
-              <span>Sign In / Launch App</span>
-              <ArrowRight size={14} />
+              <span>Sign In / Web Portal</span>
+              <ArrowRight size={13} />
             </Link>
           </div>
         </div>

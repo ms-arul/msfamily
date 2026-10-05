@@ -72,8 +72,8 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
       developer: 'XPOOL Technology Pvt Ltd',
       website: 'https://xpool.info',
       supportEmail: 'velgo7686@gmail.com',
-      version: '2.1.9',
-      buildNumber: '219',
+      version: '2.3.0',
+      buildNumber: '230',
       copyright: '© 2026 XPOOL Technology Pvt Ltd. All rights reserved.',
       socialLinks: [
         { name: 'GitHub', url: 'https://github.com/xpool-tech' },
@@ -225,7 +225,7 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
     id: 'privacy',
     title: 'Privacy Policy',
     subtitle: 'How We Collect, Use, and Protect Your Information',
-    lastUpdated: 'August 20, 2026',
+    lastUpdated: 'October 6, 2026',
     sections: [
       {
         title: '1. Introduction & Developer Identity',
@@ -275,10 +275,12 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
       {
         title: '6. Advertising',
         content: [
-          '• Google AdMob: MS Family displays banner advertisements to users on the free plan via Google AdMob. Premium subscribers do not see advertisements.',
-          '• Data Collection by AdMob: Google AdMob may collect device identifiers, IP address, and ad interaction data as governed by Google\'s advertising policies.',
-          '• Personalization: Ad personalization settings are controlled by your device-level Google Ad Settings.',
-          '• No Sale of Personal Data: We do not sell your personal information to advertisers. Ads are served by Google\'s network based on their own policies.'
+          '• Google AdMob: MS Family uses Google AdMob, a service provided by Google LLC, to display advertisements within the application. Advertising helps support the operation and continued development of MS Family. Premium subscribers enjoy an entirely ad-free experience.',
+          '• Information Processed for Advertising: The Google Mobile Ads SDK and applicable advertising partners may process certain information for advertising delivery, advertising measurement, analytics, security, fraud prevention, and related purposes. Depending on the user\'s device, settings, general location (such as IP-derived country or general region; MS Family does NOT collect or provide precise GPS coordinates for advertising), consent choices, and applicable law, this information may include IP address, device and advertising identifiers (such as Google Advertising ID), app interactions, advertisement impressions and interactions, diagnostic information, performance information, and privacy or consent choices. The information processed for advertising is handled according to applicable Google and advertising-partner policies and the user\'s privacy choices.',
+          '• Personalized and Non-Personalized Advertising: Personalized advertising may be provided where legally permitted and where the required user consent has been obtained. Users may consent, decline consent, or manage applicable advertising privacy choices. If personalized advertising consent is not provided, non-personalized or limited advertising may be used where permitted. Non-personalized ads do not use mobile advertising identifiers for profiling, but continue to rely on contextual signals (such as device type or coarse region). Advertising behavior may vary according to region, device configuration, consent status, and applicable law.',
+          '• European Privacy Choices: For users located in the European Economic Area (EEA), the United Kingdom, and Switzerland, MS Family supports Google\'s consent management solution / User Messaging Platform (UMP) for applicable advertising privacy choices. Through this system, users can: (1) Consent, (2) Do not consent, or (3) Manage their privacy choices. Where supported within the application or device environment, users may review or manage applicable privacy choices through a clearly labeled "Privacy and cookie settings" option or through their device-level Google advertising controls.',
+          '• Advertising and Financial Information: MS Family does not intentionally provide the contents of users\' SMS messages, parsed financial transactions, uploaded financial documents, savings information, loan information, or other private financial records to Google AdMob for advertising personalization or ad targeting. Advertising services operate separately from MS Family\'s financial-management functionality.',
+          '• Privacy Choices & Opt-Out: Users may manage their personalized advertising preferences at any time via device settings (Google Settings → Ads on Android) or through Google\'s Ads Settings portal at https://adssettings.google.com. MS Family does not sell your personal data to third parties.'
         ]
       },
       {
@@ -289,7 +291,7 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
           '• Firebase Cloud Messaging (FCM): Real-time push notifications for alerts and reminders.',
           '• Firebase Analytics: Anonymous usage analytics to understand how users interact with app features. This data helps us improve the application.',
           '• Google Sign-In: Secure, passwordless authentication using Google OAuth2.',
-          '• Google AdMob: Banner advertisement delivery for free-plan users.',
+          '• Google AdMob / Google Mobile Ads: Banner advertisement delivery, ad measurement, and fraud prevention for free-tier users. Google processes information according to its own privacy policy (https://policies.google.com/privacy) and advertising technology terms (https://policies.google.com/technologies/ads). For more details, see how Google uses information from sites or apps that use its services at https://policies.google.com/technologies/partner-sites.',
           '• Razorpay: Secure payment processing for web-based premium subscriptions.',
           '• Google ML Kit (On-Device): Text recognition for receipt scanning and OCR features. Processing occurs entirely on your device.',
           '• Google Generative AI: AI-powered features for financial insights and categorization assistance. Queries sent to Google\'s AI services do not include raw SMS content or personally identifiable financial data.'
@@ -315,7 +317,7 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
           '• Deleted Documents: Removed from active listings immediately upon user action. Permanently purged from cloud storage within 30 days.',
           '• SMS-Derived Data: Only the structured transaction record is retained. Raw SMS text is never stored. Transaction records are deleted upon account deletion.',
           '• Push Notification Tokens: Maintained while needed for notification delivery. Deleted upon account deletion.',
-          '• Advertising Data: AdMob data collection and retention is governed by Google\'s privacy policy.'
+          '• Advertising Data: AdMob data collection, measurement, and retention are governed by Google\'s privacy policy (https://policies.google.com/privacy).'
         ]
       },
       {
@@ -482,14 +484,14 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
     id: 'version',
     title: 'App Version & Build Metrics',
     subtitle: 'Software Build & Deployment Metrics',
-    lastUpdated: 'August 21, 2026',
+    lastUpdated: 'October 6, 2026',
     sections: [
       {
         title: '1. App Build Parameters',
         content: [
-          '• Version: 2.1.9 (Production Release)',
-          '• Build Number: 219',
-          '• Release Date: August 21, 2026',
+          '• Version: 2.3.0 (Production Release)',
+          '• Build Number: 230',
+          '• Release Date: October 6, 2026',
           '• Channel: Stable - Main'
         ]
       },
@@ -519,8 +521,17 @@ export const APP_INFO_DOCS: Record<string, AppInfoDoc> = {
     id: 'changelog',
     title: 'Changelog',
     subtitle: 'History of Releases and Feature Additions',
-    lastUpdated: 'August 21, 2026',
+    lastUpdated: 'October 6, 2026',
     sections: [
+      {
+        title: 'v2.3.0 (October 6, 2026) - AdMob Compliance, UMP Consent & Production Release',
+        content: [
+          '• [Release] Production build v2.3.0 (build 230).',
+          '• [AdMob] Fully audited and compliant Google AdMob banner integration and European UMP consent framework.',
+          '• [Compliance] Updated production Privacy Policy with detailed AdMob disclosures, personalized ad controls, and data separation.',
+          '• [Performance] UI/UX optimizations, download redirects, and responsive legal documentation.'
+        ]
+      },
       {
         title: 'v2.1.9 (August 21, 2026) - AI Provider & Mobile UI Enhancement Release',
         content: [

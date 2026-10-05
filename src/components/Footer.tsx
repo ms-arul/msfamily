@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Shield, ExternalLink } from 'lucide-react';
+import { PlayStoreButton } from './PlayStoreButton';
 
 const Footer = () => {
   return (
@@ -21,13 +22,23 @@ const Footer = () => {
                 MS Family
               </span>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                v2.1.9
+                v2.3.0
               </span>
             </Link>
 
             <p className="text-xs sm:text-sm text-slate-400 mb-6 max-w-sm leading-relaxed">
               Private, secure, and collaborative family financial management. Features on-device local SMS detection, encrypted proofs vault, and live precious metal monitors.
             </p>
+
+            <div className="mb-5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <PlayStoreButton variant="footer" />
+                <div className="text-[11px] text-slate-400">
+                  <span className="text-amber-300 font-bold">★★★★★ 4.8</span>
+                  <p className="text-[10px] text-slate-500">Android Official App</p>
+                </div>
+              </div>
+            </div>
 
             <div className="text-xs text-slate-400 space-y-1.5">
               <p>Developed & Maintained by <strong className="text-slate-300">XPOOL Technology Pvt Ltd</strong></p>

@@ -239,7 +239,7 @@ export function AppInfoDocViewer({ docId, isDirectRoute = false }: AppInfoDocVie
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">App Version:</span>
-                <span className="font-semibold text-indigo-300 font-mono">v2.1.9 (build 219)</span>
+                <span className="font-semibold text-indigo-300 font-mono">v2.3.0 (build 230)</span>
               </div>
             </div>
           </div>

@@ -12,6 +12,7 @@ import {
   FileCheck
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { PlayStoreButton } from './PlayStoreButton';
 
 const Hero = () => {
   return (
@@ -40,21 +41,36 @@ const Hero = () => {
           </p>
 
           {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 mb-4">
+            {/* Google Play Download CTA */}
+            <PlayStoreButton variant="hero" className="w-full sm:w-auto justify-center" />
+
+            {/* Web App Access */}
             <Link
               to="/login"
-              className="w-full sm:w-auto px-7 py-3 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-xl shadow-indigo-600/25 transition-all hover:scale-105 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-xl shadow-indigo-600/25 transition-all hover:scale-[1.03] active:scale-[0.98] flex items-center justify-center gap-2 border border-white/10"
             >
-              <span>Get Started Free</span>
+              <span>Launch Web App</span>
               <ArrowRight size={15} />
             </Link>
+          </div>
 
+          {/* Trust and Policy Sub-row */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-xs text-slate-400 mb-6">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-300 font-semibold text-[11px]">
+              <span>★ 4.8</span>
+              <span className="text-slate-300 font-normal">on Play Store</span>
+            </span>
+            <span className="flex items-center gap-1 text-emerald-400 font-medium text-xs">
+              <ShieldCheck size={14} />
+              <span>Play Protect Verified</span>
+            </span>
+            <span className="text-slate-600 hidden sm:inline">•</span>
             <Link
               to="/privacy-policy"
-              className="w-full sm:w-auto px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm text-slate-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 transition-all flex items-center justify-center gap-2"
+              className="text-slate-300 hover:text-white transition-colors underline decoration-slate-600 hover:decoration-white text-xs"
             >
-              <ShieldCheck size={15} className="text-emerald-400" />
-              <span>Review Privacy Policy</span>
+              Official Privacy Policy
             </Link>
           </div>
 
